@@ -25,12 +25,13 @@ services:
        # smb ports
       - "139:139/tcp"
       - "445:445/tcp"    
-    command: "-p"
+    # -p = use/pass permissions (whatever exactly this means)
+    # -n = start nmdb share anouncement server
+    command: "-n -p"
     volumes: 
       - ${STORAGE_HOST_PATH}:/shares
     environment: 
       TZ: 'EST5EDT'
-      NMBD: "true"
       USER: ${U_ROOT}
       # - USER2: ${USER_AND_PASS_ROOT}
       # - USER3: ${USER_AND_PASS_ROOT}
