@@ -1,0 +1,34 @@
+version: '3'
+
+services: 
+
+  samba: 
+    # CAUTION! This uses the tag :latest (since there are no other tags on this image!)
+    # READ ALL CHANGELOGS BEFORE UPDATING with docker-compose pull!
+    image: dperson/samba:latest
+    container_name: samba 
+    
+    # -s "<name;/path>[;browse;readonly;guest;users;admins;writelist;comment]"
+    # users are comma separated
+    ports: 
+      # smb ports
+      - 139:139
+      - 445:445
+      # nmbd ports (smb share announcement deamon)
+      - 137:137
+      - 138:138
+    # Multiline command template (if needed later)
+    # command: 
+    #   - | 
+    #     echo "1"
+    #     echo "2"
+    
+    volumes: 
+      - ${STORAGE_HOST_PATH}:/shares
+    environment: 
+      - NMBD: true
+      - USER: ${USER_AND_PASS_ROOT}
+      # - USER2: ${USER_AND_PASS_ROOT}
+      # - USER3: ${USER_AND_PASS_ROOT}
+      - SHARE: "public;/shares/public"
+      - SHARE2: "root_private;/shares/users/root;no;no;no;root"
