@@ -5,6 +5,7 @@ version = "0.3.2"
     compose = "doppler run -- docker-compose %%"
     eval    = "doppler secrets get --plain %%"
     up      = "bonnie compose up -d --remove-orphans %%"
+    up-it   = "bonnie compose up --remove-orphans %%"
 
     # [Internal] - more base commands
     git-pull = "git pull --ff"
@@ -15,6 +16,7 @@ version = "0.3.2"
     docker-cleanup = "docker image prune"
 
     # everyday scripts
-    start.cmd = "bonnie up"
-    stop      = "bonnie compose down"
-    logs      = "bonnie compose logs -f -t %%"
+    start.cmd                  = "bonnie up"
+    start.subcommands.attached = "bonnie up-it"
+    stop                       = "bonnie compose down"
+    logs                       = "bonnie compose logs -f -t %%"
