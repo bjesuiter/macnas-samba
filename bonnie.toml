@@ -7,8 +7,11 @@ version = "0.3.2"
     up      = "bonnie compose up -d --remove-orphans %%"
 
     # [Internal] - more base commands
-    git-pull       = "git pull --ff"
-    docker-pull    = "bonnie compose pull"
+    git-pull = "git pull --ff"
+
+    # CAREFULL! This mit break the server due to version incompatibilities
+    # docker-pull    = ["bonnie compose pull"]
+
     docker-cleanup = "docker image prune"
 
     # everyday scripts
