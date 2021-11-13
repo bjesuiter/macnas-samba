@@ -1,5 +1,11 @@
 version: '3'
 
+# base docker-compose from dperson: 
+# https://github.com/dperson/samba/blob/master/docker-compose.yml
+
+networks:
+  default:
+
 services: 
 
   samba: 
@@ -7,22 +13,23 @@ services:
     # READ ALL CHANGELOGS BEFORE UPDATING with docker-compose pull!
     image: dperson/samba:latest
     container_name: samba 
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    networks:
+      - default
     ports: 
-      # smb ports
-      - 139:139
-      - 445:445
-      # nmbd ports (smb share announcement deamon)
-      - 137:137
-      - 138:138
-    # Multiline command template (if needed later)
-    # command: 
-    #   - | 
-    #     echo "1"
-    #     echo "2"
-    
+       # nmbd ports (smb share announcement deamon)
+      - "137:137/udp"
+      - "138:138/udp"
+       # smb ports
+      - "139:139/tcp"
+      - "445:445/tcp"    
+    command: "-p"
     volumes: 
       - ${STORAGE_HOST_PATH}:/shares
     environment: 
+      TZ: 'EST5EDT'
       NMBD: "true"
       USER: ${U_ROOT}
       # - USER2: ${USER_AND_PASS_ROOT}
