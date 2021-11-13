@@ -7,9 +7,6 @@ services:
     # READ ALL CHANGELOGS BEFORE UPDATING with docker-compose pull!
     image: dperson/samba:latest
     container_name: samba 
-    
-    # -s "<name;/path>[;browse;readonly;guest;users;admins;writelist;comment]"
-    # users are comma separated
     ports: 
       # smb ports
       - 139:139
@@ -30,5 +27,8 @@ services:
       USER: ${USER_AND_PASS_ROOT}
       # - USER2: ${USER_AND_PASS_ROOT}
       # - USER3: ${USER_AND_PASS_ROOT}
-      SHARE: "public;/shares/public"
+      # Rules for Shares: 
+      # "<name;/path>[;browse;readonly;guest;users;admins;writelist;comment]"
+      # user lists are comma separated
+      SHARE: "public;/shares/public; "
       SHARE2: "root_private;/shares/users/root;no;no;no;root"
