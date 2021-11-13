@@ -24,7 +24,7 @@ services:
       - ${STORAGE_HOST_PATH}:/shares
     environment: 
       NMBD: "true"
-      USER: ${USER_AND_PASS_ROOT}
+      USER: ${U_ROOT}
       # - USER2: ${USER_AND_PASS_ROOT}
       # - USER3: ${USER_AND_PASS_ROOT}
       # Rules for Shares: 
