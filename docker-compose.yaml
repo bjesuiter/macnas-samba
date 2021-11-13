@@ -26,9 +26,9 @@ services:
     volumes: 
       - ${STORAGE_HOST_PATH}:/shares
     environment: 
-      - NMBD: true
-      - USER: ${USER_AND_PASS_ROOT}
+      NMBD: "true"
+      USER: ${USER_AND_PASS_ROOT}
       # - USER2: ${USER_AND_PASS_ROOT}
       # - USER3: ${USER_AND_PASS_ROOT}
-      - SHARE: "public;/shares/public"
-      - SHARE2: "root_private;/shares/users/root;no;no;no;root"
+      SHARE: "public;/shares/public"
+      SHARE2: "root_private;/shares/users/root;no;no;no;root"
