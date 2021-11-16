@@ -22,7 +22,6 @@ services:
       # nmbd ports (smb share announcement deamon)
       - "127.0.0.2:1137:137/udp"
       - "127.0.0.2:1138:138/udp"
-      - "127.0.0.2:1139:139/udp"
        # smb ports
       - "127.0.0.2:1139:139/tcp"
       - "127.0.0.2:1445:445/tcp"    
