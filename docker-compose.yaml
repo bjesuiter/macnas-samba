@@ -18,6 +18,8 @@ services:
     tty: true
     networks:
       - default
+    # network_mode: host may be necessary for nmbd share announcement
+    network_mode: host
     ports: 
       # nmbd ports (smb share announcement deamon)
       - "127.0.0.2:1137:137/udp"
@@ -31,7 +33,7 @@ services:
     volumes: 
       - ${STORAGE_HOST_PATH}:/shares
     environment: 
-      TZ: 'EST5EDT'
+      # TZ: 'EST5EDT'
       USER: ${U_ROOT}
       # - USER2: ${USER_AND_PASS_ROOT}
       # - USER3: ${USER_AND_PASS_ROOT}
