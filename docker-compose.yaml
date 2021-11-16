@@ -32,6 +32,7 @@ services:
     command: "-n -p"
     volumes: 
       - ${STORAGE_HOST_PATH}:/shares
+      - ./container/logs:/var/log/samba
     environment: 
       # TZ: 'EST5EDT'
       USER: ${U_ROOT}
