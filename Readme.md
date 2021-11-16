@@ -2,6 +2,10 @@
 
 A Docker-Compose Based Samba Server to replace the shitty macos internal samba 
 
+Links: 
+- [dperson/samba](https://hub.docker.com/r/dperson/samba)
+- [dperson/samba Dockerfile](https://hub.docker.com/r/dperson/samba/dockerfile)
+
 ## Local Dev Setup 
 
 1. Clone Repo 
