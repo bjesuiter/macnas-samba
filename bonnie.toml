@@ -20,3 +20,9 @@ version = "0.3.2"
     start.subcommands.attached = "bonnie up-it"
     stop                       = "bonnie compose down"
     logs                       = "bonnie compose logs -f -t %%"
+
+    # scripts for stanback/alpine-samba
+    adduser.cmd  = "bonnie compose exec samba adduser -s /sbin/nologin -h /home/samba -H -D %username"
+    adduser.args = ["username"]
+    addpass.cmd  = "bonnie compose exec samba smbpasswd -a %username"
+    addpass.args = ["username"]
