@@ -16,17 +16,20 @@ services:
     restart: unless-stopped
     stdin_open: true
     tty: true
-    networks:
-      - default
+    # note: networks key is not valid in network_mode=host
+    # networks:
+    #   - default
+    # ports: 
+      # nmbd ports 137 & 138 UDP (smb share announcement deamon), 
+      # smb ports 139 & 445 TCP
+      # - "127.0.0.2:1137:137/udp"
+      # - "127.0.0.2:1138:138/udp"
+      # - "127.0.0.2:1139:139/tcp"
+      # - "127.0.0.2:1445:445/tcp"  
     # network_mode: host may be necessary for nmbd share announcement
+    # note: this needs port forwardings without ips
     network_mode: host
-    ports: 
-      # nmbd ports (smb share announcement deamon)
-      - "127.0.0.2:1137:137/udp"
-      - "127.0.0.2:1138:138/udp"
-       # smb ports
-      - "127.0.0.2:1139:139/tcp"
-      - "127.0.0.2:1445:445/tcp"    
+    #
     # -p = use/pass permissions (whatever exactly this means)
     # -n = start nmdb share anouncement server
     command: "-n -p"
