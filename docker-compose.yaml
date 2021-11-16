@@ -19,12 +19,13 @@ services:
     networks:
       - default
     ports: 
-       # nmbd ports (smb share announcement deamon)
-      - "137:137/udp"
-      - "138:138/udp"
+      # nmbd ports (smb share announcement deamon)
+      - "127.0.0.2:1137:137/udp"
+      - "127.0.0.2:1138:138/udp"
+      - "127.0.0.2:1139:139/udp"
        # smb ports
-      - "139:139/tcp"
-      - "445:445/tcp"    
+      - "127.0.0.2:1139:139/tcp"
+      - "127.0.0.2:1445:445/tcp"    
     # -p = use/pass permissions (whatever exactly this means)
     # -n = start nmdb share anouncement server
     command: "-n -p"
