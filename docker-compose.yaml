@@ -19,7 +19,7 @@ services:
     networks:
       - default
     # network_mode: host may be necessary for nmbd share announcement
-    network_mode: host
+    # network_mode: host
     ports: 
       # nmbd ports (smb share announcement deamon)
       - "127.0.0.2:1137:137/udp"
